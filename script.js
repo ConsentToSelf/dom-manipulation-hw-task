@@ -50,19 +50,38 @@ DOM и возвращает информацию (в виде объекта) о
 Получить массив, который состоит из текстового содержимого ссылок внутри списка: getTextFromUl(ul) ---> ["Link1", "Link2", "Link3"]
 */
 
-const ul = document.querySelector("ul");
-const filterUl = ul.childNodes;
-const getTextFromUl = ([...arg]) => {
-  const newArr = [];
+// const ul = document.querySelector("ul");
+// const filterUl = ul.childNodes;
+// const getTextFromUl = ([...arg]) => {
+//   const newArr = [];
 
-  for (let i = 0; i < filterUl.length; i++) {
-    if (filterUl[i].nodeName === "#text") {
-      continue;
+//   for (let i = 0; i < filterUl.length; i++) {
+//     if (filterUl[i].nodeName === "#text") {
+//       continue;
+//     }
+//     newArr.push(filterUl[i].textContent);
+//   }
+//   return newArr;
+// };
+
+// const res = getTextFromUl(filterUl);
+// console.log(res);
+
+// fourth
+
+/*
+В параграфе заменить все дочерние текстовые узлы на “-text-” (вложенные теги должны остаться). Конечный результат:
+
+-text-<a href="#">reprehendunt</a>-text-<mark>nemore</mark>-text-
+*/
+const paragraph = document.querySelector("p");
+const filteredParagraph = paragraph.childNodes;
+function typeText([...arg]) {
+  const temp = arg.filter((elem) => {
+    if (elem.nodeName === "#text") {
+      elem.textContent = " -text- ";
     }
-    newArr.push(filterUl[i].textContent);
-  }
-  return newArr;
-};
-
-const res = getTextFromUl(filterUl);
-console.log(res);
+  });
+  return temp;
+}
+console.log(typeText(filteredParagraph));
